@@ -14,7 +14,8 @@ const commit = async (argv) => {
         dir: process.cwd(),
         message,
         author: {
-            name: account.username,
+            name: account.name,
+            email: account.email,
         },
     });
 

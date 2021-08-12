@@ -26,6 +26,11 @@ const createAccountPrompts = [
     },
     {
         type: "input",
+        name: "email",
+        message: "What is your account's email?",
+    },
+    {
+        type: "input",
         name: "username",
         message: "What is your git username?",
     },
