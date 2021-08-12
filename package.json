@@ -1,0 +1,25 @@
+{
+  "name": "easygit",
+  "version": "1.0.0",
+  "description": "A git wrapper that allows local git profiles to be used seamlessly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-ppg/easygit.git"
+  },
+  "author": "Alex Papageorgiou",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alex-ppg/easygit/issues"
+  },
+  "homepage": "https://github.com/alex-ppg/easygit#readme",
+  "dependencies": {
+    "data-store": "^4.0.3",
+    "inquirer": "^8.1.2",
+    "isomorphic-git": "^1.9.2",
+    "yargs": "^17.1.0"
+  }
+}
