@@ -78,7 +78,7 @@ const createDeleteAccountPrompt = (accounts) => [
 let selectAccountPrompt = createSelectAccountPrompt(accounts);
 let deleteAccountPrompt = createDeleteAccountPrompt(accounts);
 
-const getAccount = async (argv, decrypt = true) => {
+const getAccount = async (argv, d = true) => {
     let account = "new";
     do {
         if (argv.default) {
@@ -116,7 +116,7 @@ const getAccount = async (argv, decrypt = true) => {
 
     account = { ...accounts.find((a) => a.username === account) };
 
-    if (!account.token.startsWith("ghp") && decrypt) {
+    if (!account.token.startsWith("ghp") && d) {
         const { key } = await inquirer.prompt(encryptionPrompt);
         try {
             account.token = decrypt(
