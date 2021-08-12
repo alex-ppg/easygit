@@ -3,6 +3,7 @@ const { hideBin } = require("yargs/helpers");
 
 const clone = require("./modules/clone");
 const commit = require("./modules/commit");
+const push = require("./modules/push");
 const addFiles = require("./modules/add-files");
 const setDefault = require("./modules/set-default");
 
@@ -62,7 +63,7 @@ const { argv } = yargs(hideBin(process.argv))
                 .alias("d", "default")
                 .describe("d", "use the default defined account")
                 .boolean("d"),
-        commit
+        push
     )
     .command(
         "set-default [username]",
