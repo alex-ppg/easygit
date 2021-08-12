@@ -4,7 +4,7 @@ const isoGit = require("isomorphic-git");
 
 const { info } = require("../utils/msg-utils");
 
-const clone = async (argv) => {
+const addFiles = async (argv) => {
     const { files } = argv;
     for (let filepath of files) {
         await isoGit.add({
@@ -16,4 +16,4 @@ const clone = async (argv) => {
     }
 };
 
-module.exports = clone;
+module.exports = addFiles;

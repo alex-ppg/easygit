@@ -2,6 +2,7 @@ const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 
 const clone = require("./modules/clone");
+const commit = require("./modules/commit");
 const addFiles = require("./modules/add-files");
 const setDefault = require("./modules/set-default");
 
@@ -37,6 +38,31 @@ const { argv } = yargs(hideBin(process.argv))
                 })
                 .demandOption("files"),
         addFiles
+    )
+    .command(
+        "commit",
+        "commit staged files",
+        (yargs) =>
+            yargs
+                .alias("d", "default")
+                .describe("d", "use the default defined account")
+                .boolean("d")
+                .option("m", {
+                    alias: "message",
+                    describe: "message to attach to commit",
+                })
+                .demandOption("message"),
+        commit
+    )
+    .command(
+        "push",
+        "push staged files",
+        (yargs) =>
+            yargs
+                .alias("d", "default")
+                .describe("d", "use the default defined account")
+                .boolean("d"),
+        commit
     )
     .command(
         "set-default [username]",
