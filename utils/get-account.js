@@ -57,7 +57,7 @@ const createSelectAccountPrompt = (accounts) => [
             .sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0))
             .map((account) => ({
                 name: `${account.name} <${account.username}>`,
-                value: account.username,
+                value: account.name,
             }))
             .concat([
                 { name: "+ Add Account", value: "new" },
@@ -75,7 +75,7 @@ const createDeleteAccountPrompt = (accounts) => [
             .sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0))
             .map((account) => ({
                 name: `${account.name} <${account.username}>`,
-                value: account.username,
+                value: account.name,
             })),
     },
 ];
@@ -110,7 +110,7 @@ const getAccount = async (argv, d = true) => {
             deleteAccountPrompt = createDeleteAccountPrompt(accounts);
         } else if (account === "delete") {
             const { account } = await inquirer.prompt(deleteAccountPrompt);
-            accounts[accounts.findIndex((a) => a.username === account)] =
+            accounts[accounts.findIndex((a) => a.name === account)] =
                 accounts[accounts.length - 1];
             accounts.pop();
             store.set("accounts", accounts);
@@ -119,7 +119,7 @@ const getAccount = async (argv, d = true) => {
         }
     } while (account === "new" || account === "delete");
 
-    account = { ...accounts.find((a) => a.username === account) };
+    account = { ...accounts.find((a) => a.name === account) };
 
     if (!account.token.startsWith("ghp") && d) {
         const { key } = await inquirer.prompt(encryptionPrompt);
@@ -133,9 +133,10 @@ const getAccount = async (argv, d = true) => {
             error(INCORRECT_DECRYPTION_KEY);
         }
 
-        if (!account.token.startsWith("ghp")) {
-            error(INCORRECT_DECRYPTION_KEY);
-        }
+        // TODO: Find more elegant way
+        // if (!account.token.startsWith("ghp")) {
+        //     error(INCORRECT_DECRYPTION_KEY);
+        // }
     }
 
     return account;

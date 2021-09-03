@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 
 const isoGit = require("isomorphic-git");
 const http = require("isomorphic-git/http/node");

@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const isoGit = require("isomorphic-git");
 
-const { error, info } = require("../utils/msg-utils");
+const { info } = require("../utils/msg-utils");
 const getAccount = require("../utils/get-account");
 
 const commit = async (argv) => {

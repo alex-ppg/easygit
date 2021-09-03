@@ -4,6 +4,8 @@ const { hideBin } = require("yargs/helpers");
 const clone = require("./modules/clone");
 const commit = require("./modules/commit");
 const push = require("./modules/push");
+const pull = require("./modules/pull");
+const checkout = require("./modules/checkout");
 const addFiles = require("./modules/add-files");
 const setDefault = require("./modules/set-default");
 
@@ -65,6 +67,17 @@ const { argv } = yargs(hideBin(process.argv))
                 .boolean("d"),
         push
     )
+    .command(
+        "pull",
+        "pull from remote",
+        (yargs) =>
+            yargs
+                .alias("d", "default")
+                .describe("d", "use the default defined account")
+                .boolean("d"),
+        pull
+    )
+    .command("checkout", "checkout a hash / branch", (yargs) => yargs, checkout)
     .command(
         "set-default [username]",
         "set the default account",
